@@ -1,15 +1,8 @@
-$nom = Read-host "Merci de rentrer le nom et le prénom de l'utilisateur à créer"
-$login = Read-host "Merci de rentrer le login de l'utilisateur à créer"
-$mdp = Read-host "Merci de rentrer le mot de passe de l'utilisateur à créer"
-$etage = Read-host "Merci d'indiquer l'étage"
-$service = Read-host "Merci d'indiquer le service"
-$direction = Read-host "Merci d'indiquer la direction"
-$groupe = Read-Host "Merci de Rentrer le Nom du Groupe cible"
-$Dossier = read-host "Merci de rentrer le chemin du dossier"
+
 
 if ( $args[0] -eq "h" )
 {
-        echo "script nom age"
+        echo "script nom d'utilisateur login mdp etage service direction"
         exit
 }
 
@@ -18,15 +11,58 @@ $nom=$args[0]
 
 if ( $nom -isnot [string] )
 {
-        $nom=read-host "Quel est votre nom?"
+        $nom=read-host "Merci de rentrer le nom et le prénom de l'utilisateur à créer"
 }
-$age=$args[1]
 
-if ( $age -isnot [int] )
+$login=$args[1]
+
+if ( $login -isnot [int] )
 {
-        $age=read-host "Quel est votre age?"
+        $login=read-host "Merci de rentrer le login de l'utilisateur à créer"
 }
-echo "Hello $name", "vous avez $age ans"
+
+$mdp=$args[2]
+
+if ( $mdp -isnot [string] )
+{
+        $mdp=read-host "Merci de rentrer le mot de passe de l'utilisateur"
+}
+
+$Etage=$args[3]
+
+if ( $Etage -isnot [string] )
+{
+        $Etage=read-host "Merci d'indiquer l'étage de l'utilisateur"
+}
+
+$service=$args[4]
+
+if ( $service -isnot [string] )
+{
+        $service=read-host "Merci d'indiquer le service"
+}
+
+$direction=$args[5]
+
+if ( $direction -isnot [string] )
+{
+        $direction=read-host "Merci d'indiquer la direction"
+}
+
+$groupe=$args[6]
+
+if ( $groupe -isnot [string] )
+{
+        $groupe=read-host "Merci de Rentrer le Nom du Groupe cible"
+}
+
+$dossier=$args[7]
+
+if ( $dossier -isnot [string] )
+{
+        $dossier=read-host "Merci de rentrer le chemin du dossier"
+}
+echo "$name", "$login", "$mdp", "$etage", "$service", "$direction", "$groupe", "$dossier"
 
 # Création d'un nouvel utilisateur
 
