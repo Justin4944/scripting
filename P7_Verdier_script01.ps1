@@ -16,7 +16,7 @@ if ( $nom -isnot [string] )
 
 $login=$args[1]
 
-if ( $login -isnot [int] )
+if ( $login -isnot [string] )
 {
         $login=read-host "Merci de rentrer le login de l'utilisateur à créer"
 }
@@ -65,6 +65,13 @@ if ( $dossier -isnot [string] )
 echo "$name", "$login", "$mdp", "$etage", "$service", "$direction", "$groupe", "$dossier"
 
 # Création d'un nouvel utilisateur
+
+write-host "Etage 0 service Accueil, Direction Accueil
+            Etage 1 service Direction des Ressources Humaines, Responsable Cadres, Responsable Formation, Responsable Non Cadres, Responsable Paye, Direction Ressources Humaines
+            Etage 2 service Direction Technique, Responsable Logistique, Responsable Nouveaux Projets, Responsable Support, direction Technique
+            Etage 3 service Direction Financière, Responsable Banques, Responsable Comptabilité, Responsable Support, direction Finance
+            Etage 4 service Direction Marketing, Responsable Marketing Dev, Responsable Marketing Opérationnel, Stagiaire Marketing, direction Marketing
+            Etage 5 service Assistance Direction, Direction Générale, direction Direction"
 
 try
 {
