@@ -1,7 +1,7 @@
 ﻿# Liste des groupes dont un utilisateur est membre
 
 
-$user=$args[1]
+$user=$args[0]
 
 if ( $user -isnot [string] )
 {
@@ -10,7 +10,7 @@ if ( $user -isnot [string] )
 
 try
 {
-    Get-ADUser -Identity $user -Properties Memberof | Select-Object Memberof "OU=,DC=acme,DC=fr" | Out-File -Filepath "C:\Users\Admnistrateur\Desktop\usergroupmember.csv" -Encoding UTF8
+    Get-ADUser -Identity $user -Properties Memberof | Select-Object Name, Memberof | Out-File membre.csv
     write-host "L'utilisateur fait partie de ces groupes:"
 }
 catch
