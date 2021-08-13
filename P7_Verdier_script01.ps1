@@ -25,14 +25,15 @@ $mdp=$args[2]
 
 if ( $mdp -isnot [string] )
 {
-        $mdp=read-host "Merci de rentrer le mot de passe de l'utilisateur"
+        $mdp=read-host "Merci de rentrer le mot de passe de l'utilisateur" -AsSecureString
 }
 
-$Etage=$args[3]
+$etage=$args[3]
 
-if ( $Etage -isnot [string] )
+if ( $etage -isnot [string] )
 {
-        $Etage=read-host "Merci d'indiquer l'étage de l'utilisateur"
+        Get-ADOrganizationalUnit -Filter 'Name -like "Etage*"' | Format-Table Name
+        $etage=read-host "Merci d'indiquer l'étage de l'utilisateur"
 }
 
 $service=$args[4]
@@ -53,6 +54,7 @@ $groupe=$args[6]
 
 if ( $groupe -isnot [string] )
 {
+        Get-ADGroup -Filter 'Name -like "Direction OR Ressources"' | Format-Table Name
         $groupe=read-host "Merci de Rentrer le Nom du Groupe cible"
 }
 
@@ -66,12 +68,6 @@ echo "$name", "$login", "$mdp", "$etage", "$service", "$direction", "$groupe", "
 
 # Création d'un nouvel utilisateur
 
-write-host "Etage 0 service Accueil, Direction Accueil
-            Etage 1 service Direction des Ressources Humaines, Responsable Cadres, Responsable Formation, Responsable Non Cadres, Responsable Paye, Direction Ressources Humaines
-            Etage 2 service Direction Technique, Responsable Logistique, Responsable Nouveaux Projets, Responsable Support, direction Technique
-            Etage 3 service Direction Financière, Responsable Banques, Responsable Comptabilité, Responsable Support, direction Finance
-            Etage 4 service Direction Marketing, Responsable Marketing Dev, Responsable Marketing Opérationnel, Stagiaire Marketing, direction Marketing
-            Etage 5 service Assistance Direction, Direction Générale, direction Direction"
 
 try
 {
