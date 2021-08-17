@@ -54,7 +54,7 @@ $groupe=$args[6]
 
 if ( $groupe -isnot [string] )
 {
-        Get-ADGroup -Filter 'Name -like "Direction OR Ressources"' | Format-Table Name
+        Get-ADGroup -Filter 'Name -like "ACME*"' | Format-Table Name
         $groupe=read-host "Merci de Rentrer le Nom du Groupe cible"
 }
 

@@ -5,6 +5,7 @@ $groupe=$args[0]
 
 if ( $groupe -isnot [string] )
 {
+        Get-ADGroup -Filter 'Name -like "ACME*"' | Format-Table Name
         $groupe=read-host "Merci de préciser le groupe que vous voulez voir"
 }
 

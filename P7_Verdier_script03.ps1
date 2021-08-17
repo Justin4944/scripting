@@ -10,7 +10,7 @@ if ( $user -isnot [string] )
 
 try
 {
-    Get-ADUser -Identity $user -Properties Memberof | Select-Object Name, Memberof | Out-File membre.csv
+    Get-ADUser -Identity $user -Properties Memberof | Select-Object Name, Memberof | Out-File membre.txt
     write-host "L'utilisateur fait partie de ces groupes:"
 }
 catch
