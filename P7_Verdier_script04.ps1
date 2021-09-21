@@ -1,10 +1,15 @@
-$Listpc=Get-ADComputer -Filter 'Name -like "DESKTOP*"'
-$Listuser=Get-ADUser -Filter { Enabled -eq $true }
+$Listpc=(Get-ADComputer -Filter 'Name -like "DESKTOP*"').name
+Foreach ($line in $Listpc)
+{
+               
+$Listuser=(Get-ADUser -Filter * -searchbase "DC=ACME,DC=FR").SamAccountName
 
-Foreach($pc in $Listpc)
+
+
+    Foreach($user in $Listuser)
+
 {
-Foreach($user in $Listuser)
-{
-    copy-item -Path "\\DNSHostName\C:\Users\$Listuser\Documents -Destination" '\\SRVWIN01\SAV'
+        New-Item -Path "C:\SAV\$user" -ItemType directory
+        xcopy "\\$line\$user\" "\\SRVWIN01\SAV\$user"
 }
 }

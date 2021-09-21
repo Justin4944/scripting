@@ -1,0 +1,1 @@
+﻿Get-smbShare | Select-Object -Property Name | Export-csv P7_VERDIER_AD07.txt -Encoding UTF8

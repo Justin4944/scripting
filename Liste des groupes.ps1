@@ -1,0 +1,1 @@
+﻿Get-ADgroup -Filter 'Name -like "ACME*"'| Select-Object -Property DistinguishedName | Export-csv liste_groupe.txt -Encoding UTF8

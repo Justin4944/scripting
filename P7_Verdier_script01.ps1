@@ -54,7 +54,7 @@ $groupe=$args[6]
 
 if ( $groupe -isnot [string] )
 {
-        Get-ADGroup -Filter 'Name -like "ACME*"' | Format-Table Name
+        Get-AdGroup -filter 'Name -like "ACME*"' | Format-Table Name
         $groupe=read-host "Merci de Rentrer le Nom du Groupe cible"
 }
 
@@ -72,7 +72,9 @@ echo "$name", "$login", "$mdp", "$etage", "$service", "$direction", "$groupe", "
 try
 {
     New-ADUser -Name $nom -SamAccountName $login -UserPrincipalName $login@acme.fr -Path "OU=$service,OU=$direction,OU=$etage,DC=acme,DC=fr" -AccountPassword (ConvertTo-SecureString -AsPlainText $mdp -Force) -PasswordNeverExpires $true -CannotChangePassword $true -Enable $true
+    Add-adGroupMember -Identity $groupe -Members $login
     write-host "L'utilisateur $nom a été créé correctement"
+    
 }
 catch
 {
